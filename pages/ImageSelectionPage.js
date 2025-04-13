@@ -29,9 +29,7 @@ function ImageSelectionPage({ remainingTries, setRemainingTries }) {
                 <p>Basierend auf unserer Datenbank, könnten folgende Fingerabdrücke in Frage kommen:</p>
                 <p>Bitte den korrekten Fingerabdruck auswählen, um fortzufahren.</p>
                 <p>Verbleibende Versuche: {remainingTries}</p>
-                <p>xxxxx</p>
                 <table className="fingerprint-table">
-                    {/* Render fingerprint images */}
                     {[...Array(2)].map((_, row) => (
                         <tr key={row}>
                             {[...Array(5)].map((_, col) => {
@@ -42,7 +40,7 @@ function ImageSelectionPage({ remainingTries, setRemainingTries }) {
                                             src={`../assets/fingerprint-database/fingerprint (${index}).png`}
                                             alt={`Bild ${index}`}
                                             onClick={() => handleImageClick(index)}
-                                            style={{ width: '100px' }}
+                                            className="fingerprint-image"
                                         />
                                     </td>
                                 );

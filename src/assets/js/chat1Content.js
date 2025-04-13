@@ -18,51 +18,8 @@ export default function openChat1() {
             <button onclick="closeChat()" class="close-chat">Schließen</button>
         </div>
     `;
-    const chatStyles = `
-        <style>
-            .chat-popup {
-                position: fixed;
-                top: 10%;
-                left: 50%;
-                transform: translate(-50%, 0);
-                width: 400px;
-                background: #f9f9f9;
-                border: 1px solid #ccc;
-                border-radius: 10px;
-                padding: 15px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-                font-family: Arial, sans-serif;
-            }
-            .chat-message {
-                margin-bottom: 10px;
-            }
-            .chat-message span {
-                font-weight: bold;
-                display: block;
-                margin-bottom: 5px;
-            }
-            .chat-message.user {
-                text-align: right;
-            }
-            .chat-message.mama {
-                text-align: left;
-            }
-            .close-chat {
-                display: block;
-                margin: 10px auto 0;
-                padding: 5px 10px;
-                background: #007bff;
-                color: white;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-            }
-            .close-chat:hover {
-                background: #0056b3;
-            }
-        </style>
-    `;
+
     const popup = document.createElement('div');
-    popup.innerHTML = chatContent + chatStyles;
+    popup.innerHTML = chatContent;
     document.body.appendChild(popup);
 }
