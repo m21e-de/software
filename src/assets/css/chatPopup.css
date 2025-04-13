@@ -1,0 +1,59 @@
+.chat-popup {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 400px;
+    max-height: 80%;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+    overflow-y: auto; /* Enable scrolling if content overflows */
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-message {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%;
+    word-wrap: break-word; /* Ensure long words break to fit the container */
+}
+
+.chat-message span {
+    font-size: 0.8em;
+    color: #555;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.chat-message.user {
+    align-self: flex-end;
+    background: #dcf8c6; /* Light green for user messages */
+    text-align: left;
+}
+
+.chat-message.mama {
+    align-self: flex-start;
+    background: #f1f0f0; /* Light gray for mama messages */
+    text-align: left;
+}
+
+.close-chat {
+    display: block;
+    margin: 10px auto 0;
+    padding: 5px 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.close-chat:hover {
+    background: #0056b3;
+}

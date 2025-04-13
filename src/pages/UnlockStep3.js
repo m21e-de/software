@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ChatPopup from '../components/ChatPopup'; // Import the new ChatPopup component
+import '../assets/css/chatPopup.css'; // Import the shared chat popup styles
+import '../assets/css/unlockStep3.css'; // Import the new styles for locked/unlocked tags
 import openChat1 from '../assets/js/chat1Content';
 import openChat2 from '../assets/js/chat2Content';
 import openChat3 from '../assets/js/chat3Content';
@@ -8,24 +9,30 @@ import openChat3 from '../assets/js/chat3Content';
 function UnlockStep3() {
   const navigate = useNavigate();
   const [showChat, setShowChat] = useState(false);
-  const [chatContent, setChatContent] = useState('');
+  const [chatNumber, setChatNumber] = useState(null);
 
   const openChat = (chatNumber) => {
+    setChatNumber(chatNumber);
+    setShowChat(true);
+  };
+
+  const closeChat = () => {
+    setShowChat(false);
+    setChatNumber(null);
+  };
+
+  const renderChatContent = () => {
     switch (chatNumber) {
       case 1:
-        openChat1();
-        break;
+        return openChat1();
       case 2:
-        openChat2();
-        break;
+        return openChat2();
       case 3:
-        openChat3();
-        break;
+        return openChat3();
       default:
-        console.error('Invalid chat number');
+        return null;
     }
   };
-  const closeChat = () => setShowChat(false);
 
   return (
     <div>
@@ -39,9 +46,9 @@ function UnlockStep3() {
           <li>
             <span>📁 DCIM</span>
             <ul>
-              <li>📄 photo1.jpg <span className="locked-tag">&lt;locked&gt;</span></li>
-              <li>📄 photo2.jpg <span className="locked-tag">&lt;locked&gt;</span></li>
-              <li>📄 photo3.jpg <span className="locked-tag">&lt;locked&gt;</span></li>
+              <li>🖼️ photo1.jpg <span className="locked-tag">&lt;locked&gt;</span></li>
+              <li>🖼️ photo2.jpg <span className="locked-tag">&lt;locked&gt;</span></li>
+              <li>🖼️ photo3.jpg <span className="locked-tag">&lt;locked&gt;</span></li>
             </ul>
           </li>
           <li>
@@ -55,15 +62,15 @@ function UnlockStep3() {
             <span>📁 Chats</span>
             <ul>
               <li>
-                <span className="chat-link" onClick={() => openChat(1)}>📄 chat1.txt</span> 
+                <span className="chat-link" onClick={() => openChat(1)}>💬 Chat-Mama.msg</span> 
                 <span className="unlocked-tag">&lt;unlocked&gt;</span>
               </li>
               <li>
-                <span className="chat-link" onClick={() => openChat(2)}>📄 chat2.txt</span> 
+                <span className="chat-link" onClick={() => openChat(2)}>💬 Chat-Markus.txt</span> 
                 <span className="unlocked-tag">&lt;unlocked&gt;</span>
               </li>
               <li>
-                <span className="chat-link" onClick={() => openChat(3)}>📄 chat3.txt</span> 
+                <span className="chat-link" onClick={() => openChat(3)}>💬 Chat-Fabrizio.txt</span> 
                 <span className="unlocked-tag">&lt;unlocked&gt;</span>
               </li>
             </ul>
@@ -77,9 +84,14 @@ function UnlockStep3() {
           </li>
         </ul>
       </div>
-      <button onClick={() => navigate('/')}>Zurück zur Startseite</button>
+      <button onClick={() => navigate('/')}>🏠 Startseite</button>
 
-      {showChat && <ChatPopup content={chatContent} onClose={closeChat} />} {/* Pass chat content */}
+      {showChat && (
+        <div className="chat-popup">
+          {renderChatContent()}
+          <button onClick={closeChat} className="close-chat">Schließen</button>
+        </div>
+      )}
     </div>
   );
 }

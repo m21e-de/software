@@ -5,6 +5,7 @@ import '../assets/css/LicensePlateCheck.css';
 function LicensePlateCheck() {
   const [licensePlate, setLicensePlate] = useState('');
   const [error, setError] = useState('');
+  const [popupMessage, setPopupMessage] = useState(''); // New state for popup message
   const navigate = useNavigate();
 
   const validateLicensePlate = () => {
@@ -19,7 +20,7 @@ function LicensePlateCheck() {
       setError('Bitte geben Sie ein gültiges deutsches Kennzeichen ein (z. B. B-MW-1234).');
     } else {
       setError('');
-      alert('Kennzeichen erfolgreich überprüft!');
+      setPopupMessage('Kennzeichen erfolgreich überprüft!'); // Set popup message
     }
   };
 
@@ -39,7 +40,13 @@ function LicensePlateCheck() {
         <button onClick={validateLicensePlate}>Suchen</button>
         {error && <p className="error-message">{error}</p>}
       </div>
-      <button onClick={() => navigate('/')}>Zurück zur Startseite</button>
+      {popupMessage && (
+        <div className="popup">
+          <p>{popupMessage}</p>
+          <button onClick={() => setPopupMessage('')}>Schließen</button>
+        </div>
+      )}
+      <button onClick={() => navigate('/')}>🏠 Startseite</button>
     </div>
   );
 }

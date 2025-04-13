@@ -18,7 +18,6 @@ export default function openChat1() {
             <button onclick="closeChat()" class="close-chat">Schließen</button>
         </div>
     `;
-
     const popup = document.createElement('div');
     popup.innerHTML = chatContent;
     document.body.appendChild(popup);

@@ -54,7 +54,7 @@ function UnlockStep2() {
           ))}
         </table>
       </div>
-      <button onClick={() => navigate('/')}>Zurück zur Startseite</button>
+      <button onClick={() => navigate('/')}>🏠 Startseite</button>
     </div>
   );
 }

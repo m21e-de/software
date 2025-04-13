@@ -1,0 +1,9 @@
+.locked-tag {
+    color: red;
+    font-weight: bold;
+}
+
+.unlocked-tag {
+    color: green;
+    font-weight: bold;
+}

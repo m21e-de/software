@@ -5,13 +5,14 @@ import '../assets/css/OrderDonuts.css';
 function OrderDonuts() {
   const [quantity, setQuantity] = useState('');
   const [flavor, setFlavor] = useState('Schokolade');
+  const [orderSuccess, setOrderSuccess] = useState(false); // New state for popup
   const navigate = useNavigate();
 
   const handleOrder = () => {
     if (!quantity || quantity <= 0) {
       alert('Bitte geben Sie eine gültige Anzahl ein.');
     } else {
-      alert(`Bestellung erfolgreich! ${quantity} ${flavor}-Donuts wurden bestellt.`);
+      setOrderSuccess(true); // Show popup on successful order
     }
   };
 
@@ -35,7 +36,13 @@ function OrderDonuts() {
         </select>
         <button onClick={handleOrder}>Bestellen</button>
       </div>
-      <button onClick={() => navigate('/')}>Zurück zur Startseite</button>
+      {orderSuccess && (
+        <div className="popup">
+          <p>Ihre Donuts wurden erfolgreich bestellt!</p>
+          <button onClick={() => setOrderSuccess(false)}>Schließen</button>
+        </div>
+      )}
+      <button onClick={() => navigate('/')}>🏠 Startseite</button>
     </div>
   );
 }

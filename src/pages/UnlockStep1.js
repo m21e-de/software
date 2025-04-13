@@ -19,7 +19,7 @@ function UnlockStep1() {
         <p>Um fortzufahren, klicken Sie auf "Bestätigen".</p>
         <button onClick={handleConfirm}>Bestätigen</button>
       </div>
-      <button onClick={() => navigate('/')}>Zurück zur Startseite</button>
+      <button onClick={() => navigate('/')}>🏠 Startseite</button>
     </div>
   );
 }
