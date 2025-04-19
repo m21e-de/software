@@ -1,0 +1,23 @@
+.image-selection-container {
+    text-align: center;
+    margin: 20px;
+}
+
+.fingerprint-table {
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.fingerprint-table td {
+    padding: 10px;
+}
+
+.fingerprint-image {
+    width: 100px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.fingerprint-image:hover {
+    transform: scale(1.1);
+}
